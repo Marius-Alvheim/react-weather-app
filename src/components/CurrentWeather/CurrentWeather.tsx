@@ -22,7 +22,7 @@ export default function CurrentWeather(): JSX.Element {
 
         <div className={styles.temp}>
           <p>
-            {weather?.forecast.forecastday[0].day.mintemp_c}/
+            {weather?.forecast.forecastday[0].day.mintemp_c.toFixed(0)}/
             {weather?.forecast.forecastday[0].day.maxtemp_c.toFixed(0)} °C
           </p>
           <p>Feels like {weather?.current.feelslike_c.toFixed(0)} °C</p>
