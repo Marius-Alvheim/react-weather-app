@@ -5,13 +5,29 @@ import styles from "./CurrentWeather.module.css";
 
 export default function CurrentWeather(): JSX.Element {
   const { weather } = useContext(WeatherContext);
-  // const condition = weather?.current.condition.text;
 
   return (
-    <section className={styles.test}>
-      <h1>{weather?.current.condition.text}</h1>
-      <img src={weather?.current.condition.icon} />
-      <h2>{weather?.current.temp_c} C</h2>
+    <section className={styles.current}>
+      <div className={styles.iconBox}>
+        <h3>{weather?.current.condition.text}</h3>
+        <img src={weather?.current.condition.icon} />
+        <p>{weather?.current.temp_c.toFixed(0)} °C</p>
+      </div>
+
+      <div className={styles.infoBox}>
+        <div className={styles.area}>
+          <p>{weather?.location.name}</p>
+          <p>{weather?.location.region}</p>
+        </div>
+
+        <div className={styles.temp}>
+          <p>
+            {weather?.forecast.forecastday[0].day.mintemp_c}/
+            {weather?.forecast.forecastday[0].day.maxtemp_c.toFixed(0)} °C
+          </p>
+          <p>Feels like {weather?.current.feelslike_c.toFixed(0)} °C</p>
+        </div>
+      </div>
     </section>
   );
 }

@@ -4,8 +4,8 @@ import styles from "./Header.module.css";
 export default function Header(): JSX.Element {
   return (
     <header className={styles.header}>
-      <p>Placeholder Logo</p>
-      <button>Change to farenheit</button>
+      <div className={styles.logo}>MA</div>
+      <button className={styles.btn}>C°/F°</button>
     </header>
   );
 }

@@ -1,5 +1,19 @@
+:root {
+  --background-color: #414a58;
+  --component-color: #0c1b24;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--background-color);
 }
+
+/* 
+#414a58 dark muted blue-gray color
+^^ background of google weather
+
+#0c1b24
+background of componenet where the info about the weather is
+*/
