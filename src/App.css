@@ -6,10 +6,15 @@
 body {
   margin: 0;
   padding: 0;
+  color: #fcfafa;
   box-sizing: border-box;
   background-color: var(--background-color);
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 }
 
-/* 
-Find a font
-*/
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}

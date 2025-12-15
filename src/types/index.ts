@@ -127,3 +127,11 @@ export type Location = {
   region: string;
   tz_id: string;
 };
+
+export type Weather = {
+  current: Current;
+  forecast: {
+    forecastday: Forecastday[];
+  };
+  location: Location;
+};

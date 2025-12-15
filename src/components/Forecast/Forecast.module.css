@@ -1,0 +1,37 @@
+.forecastBox {
+  background-color: var(--component-color);
+  width: 90%;
+  margin: 1.5rem auto;
+  border-radius: 0.4rem;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.day > p {
+  margin: 0 0.8rem;
+}
+
+.day:nth-child(2) {
+  border-top: #fcfafa 0.1rem solid;
+  border-bottom: #fcfafa 0.1rem solid;
+}
+
+.iconBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconBox > img {
+  width: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.iconBox > p {
+  margin-bottom: 0.5rem;
+}

@@ -1,14 +1,6 @@
 import { useEffect, useState, createContext } from "react";
 import type { JSX, ReactNode } from "react";
-import type { Current, Forecastday, Location } from "../../types/index";
-
-type Weather = {
-  current: Current;
-  forecast: {
-    forecastday: Forecastday[];
-  };
-  location: Location;
-};
+import type { Weather } from "../../types/index";
 
 type MainProps = {
   children: ReactNode;
@@ -16,14 +8,15 @@ type MainProps = {
 
 type WeatherContextType = {
   weather: Weather | undefined;
+  unit: "c" | "f";
+  switchUnits: () => void;
 };
 
-const WeatherContext = createContext<WeatherContextType>({
-  weather: undefined,
-});
+const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
 
 export default function Main({ children }: MainProps): JSX.Element {
   const [weather, setWeather] = useState<Weather | undefined>(undefined);
+  const [unit, setUnit] = useState<"c" | "f">("c");
 
   useEffect((): void => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -50,8 +43,10 @@ export default function Main({ children }: MainProps): JSX.Element {
     });
   }, []);
 
+  const switchUnits = () => setUnit((prev) => (prev === "c" ? "f" : "c"));
+
   return (
-    <WeatherContext.Provider value={{ weather }}>
+    <WeatherContext.Provider value={{ weather, unit, switchUnits }}>
       <main>{children}</main>
     </WeatherContext.Provider>
   );
