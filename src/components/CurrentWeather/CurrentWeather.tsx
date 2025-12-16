@@ -51,7 +51,7 @@ export default function CurrentWeather(): JSX.Element {
 
         <div className={styles.temp}>
           <p>
-            {minTempUnit}/{maxTempUnit} {unit}
+            {minTempUnit}/{maxTempUnit} °{unit.toUpperCase()}
           </p>
           <p>
             Feels like {feelsLike} °{unit.toUpperCase()}

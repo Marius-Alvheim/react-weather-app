@@ -3,19 +3,16 @@
   width: 90%;
   margin: 1.5rem auto;
   border-radius: 0.4rem;
+  overflow: hidden;
 }
 
-.day {
+.currentDay {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.day > p {
-  margin: 0 0.8rem;
-}
-
-.day:nth-child(2) {
+.forecastEl:nth-child(2) {
   border-top: #fcfafa 0.1rem solid;
   border-bottom: #fcfafa 0.1rem solid;
 }
@@ -33,5 +30,35 @@
 }
 
 .iconBox > p {
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
+}
+
+.forecastEl {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 1rem 0;
+  width: 100%;
+  margin-left: 1rem;
+}
+
+.endEl {
+  margin: 0 1rem 0 1rem;
+}
+
+.hourBoxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.hourBoxes > img {
+  width: 2rem;
 }
