@@ -1,31 +1,33 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { WeatherContext } from "../Main/Main";
 import type { JSX } from "react";
 import type { Forecastday } from "../../types";
 import styles from "./Forecast.module.css";
 
 export default function Forecast(): JSX.Element {
-  // const [currentDayIndex, setCurrentDayIndex] = useState<number | null>(null);
+  const [activeDay, setActiveDay] = useState<number | null>(null);
   const context = useContext(WeatherContext);
-  // console.log(currentDayIndex);
 
   if (!context) {
     throw new Error("Typescript stops screaming");
   }
-
   const { weather, unit } = context;
-  console.log(weather);
 
   const forecastElements = weather?.forecast.forecastday.map(
     (day: Forecastday, index: number): JSX.Element => {
+      const today = new Date().toISOString().split("T")[0];
+      const open = activeDay === index ? styles.open : "";
+      // console.log(today);
       return (
         <div key={day.date} className={styles.forecastEl}>
           <div
             className={styles.currentDay}
-            onClick={() => console.log(`the index is ${index}`)}
+            onClick={() => setActiveDay(activeDay === index ? null : index)}
           >
             <p className={styles.endEl}>
-              {day.date.split("-").reverse().slice(0, 2).join(".")}
+              {day.date === today
+                ? "Today"
+                : day.date.split("-").reverse().slice(0, 2).join(".")}
             </p>
 
             <div className={styles.iconBox}>
@@ -48,7 +50,7 @@ export default function Forecast(): JSX.Element {
             </p>
           </div>
 
-          <div className={styles.hours}>
+          <div className={`${styles.hours} ${open}`}>
             {day.hour?.length
               ? day.hour?.map(
                   (hour): JSX.Element => (
@@ -61,13 +63,13 @@ export default function Forecast(): JSX.Element {
                       </p>
                       <img src={hour.condition.icon} />
                       {/* <p>
-                        {hour.chance_of_rain > 0
-                          ? hour.chance_of_rain + "%"
-                          : null}
-                        {hour.chance_of_snow > 0
-                          ? hour.chance_of_snow + "%"
-                          : null}
-                      </p> */}
+                          {hour.chance_of_rain > 0
+                            ? hour.chance_of_rain + "%"
+                            : null}
+                          {hour.chance_of_snow > 0
+                            ? hour.chance_of_snow + "%"
+                            : null}
+                        </p> */}
                       <p>{hour.time.slice(10, 18)}</p>
                     </div>
                   )

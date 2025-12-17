@@ -25,7 +25,7 @@
 }
 
 .iconBox > img {
-  width: 3rem;
+  width: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -41,10 +41,22 @@
 .hours {
   display: flex;
   overflow-x: auto;
-  gap: 15px;
-  padding: 1rem 0;
+  gap: 1rem;
   width: 100%;
   margin-left: 1rem;
+
+  max-height: 0;
+  /* opacity: 0; */
+  overflow-x: auto; /* ✅ allow horizontal scroll */
+  overflow-y: hidden;
+
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.open {
+  max-height: 12.5rem;
+  opacity: 1;
+  padding: 1rem 0;
 }
 
 .endEl {
