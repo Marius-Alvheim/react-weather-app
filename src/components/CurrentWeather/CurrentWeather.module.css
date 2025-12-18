@@ -49,3 +49,9 @@
 .temp {
   margin-bottom: 0.2rem;
 }
+
+@media (min-width: 1201px) {
+  .current {
+    /* width: 40rem; */
+  }
+}

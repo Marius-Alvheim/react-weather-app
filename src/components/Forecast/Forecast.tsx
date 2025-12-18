@@ -19,7 +19,7 @@ export default function Forecast(): JSX.Element {
       const open = activeDay === index ? styles.open : "";
       // console.log(today);
       return (
-        <div key={day.date} className={styles.forecastEl}>
+        <section key={day.date} className={styles.forecastEl}>
           <div
             className={styles.currentDay}
             onClick={() => setActiveDay(activeDay === index ? null : index)}
@@ -61,22 +61,28 @@ export default function Forecast(): JSX.Element {
                           : hour.temp_f.toFixed(0)}
                         °{unit.toUpperCase()}
                       </p>
+                      <p
+                        style={{
+                          color: "cyan",
+                          textAlign: "center",
+                          margin: "0.2rem 0 0.2rem 0",
+                        }}
+                      >
+                        {hour.chance_of_rain > 0
+                          ? hour.chance_of_rain + "%"
+                          : null}
+                        {hour.chance_of_snow > 0
+                          ? hour.chance_of_snow + "%"
+                          : null}
+                      </p>
                       <img src={hour.condition.icon} />
-                      {/* <p>
-                          {hour.chance_of_rain > 0
-                            ? hour.chance_of_rain + "%"
-                            : null}
-                          {hour.chance_of_snow > 0
-                            ? hour.chance_of_snow + "%"
-                            : null}
-                        </p> */}
                       <p>{hour.time.slice(10, 18)}</p>
                     </div>
                   )
                 )
               : null}
           </div>
-        </div>
+        </section>
       );
     }
   );

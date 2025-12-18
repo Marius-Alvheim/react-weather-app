@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from "react";
 import type { JSX, ReactNode } from "react";
 import type { Weather } from "../../types/index";
+import Header from "../Header/Header";
 
 type MainProps = {
   children: ReactNode;
@@ -46,9 +47,12 @@ export default function Main({ children }: MainProps): JSX.Element {
   const switchUnits = () => setUnit((prev) => (prev === "c" ? "f" : "c"));
 
   return (
-    <WeatherContext.Provider value={{ weather, unit, switchUnits }}>
-      <main>{children}</main>
-    </WeatherContext.Provider>
+    <>
+      <WeatherContext.Provider value={{ weather, unit, switchUnits }}>
+        <Header />
+        <main>{children}</main>
+      </WeatherContext.Provider>
+    </>
   );
 }
 

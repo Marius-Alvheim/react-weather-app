@@ -42,6 +42,7 @@ export default function Now(): JSX.Element {
   //   Im currently removing the dependency array since it works and is not causing problems
   useEffect(() => {
     if (context !== undefined) {
+      // runs to soon so the timeout makes sure everything is rendered and then it focuses
       setTimeout(() => {
         currentHourRef.current?.scrollIntoView({
           behavior: "smooth",
