@@ -50,6 +50,12 @@
   margin-bottom: 0.2rem;
 }
 
+.rainChance {
+  color: cyan;
+  text-align: center;
+  margin: 0.2rem 0 0.2rem 0;
+}
+
 @media (min-width: 1201px) {
   .current {
     /* width: 40rem; */

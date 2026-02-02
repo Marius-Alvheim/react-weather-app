@@ -33,13 +33,12 @@ export default function Forecast(): JSX.Element {
             <div className={styles.iconBox}>
               <img src={day.day.condition.icon} />
               <p>
+                {/* this spaghetti code says if rain, show chance. If not show chance of snow */}
                 {day.day.daily_chance_of_rain > 0
-                  ? day.day.daily_chance_of_rain
-                  : null}
-                {day.day.daily_chance_of_snow > 0
-                  ? day.day.daily_chance_of_snow
-                  : null}{" "}
-                %
+                  ? day.day.daily_chance_of_rain + " %"
+                  : day.day.daily_chance_of_snow > 0
+                    ? day.day.daily_chance_of_snow + " %"
+                    : null}
               </p>
             </div>
             <p className={styles.endEl}>
@@ -61,13 +60,7 @@ export default function Forecast(): JSX.Element {
                           : hour.temp_f.toFixed(0)}
                         °{unit.toUpperCase()}
                       </p>
-                      <p
-                        style={{
-                          color: "cyan",
-                          textAlign: "center",
-                          margin: "0.2rem 0 0.2rem 0",
-                        }}
-                      >
+                      <p className={styles.rainChance}>
                         {hour.chance_of_rain > 0
                           ? hour.chance_of_rain + "%"
                           : null}
@@ -78,13 +71,13 @@ export default function Forecast(): JSX.Element {
                       <img src={hour.condition.icon} />
                       <p>{hour.time.slice(10, 18)}</p>
                     </div>
-                  )
+                  ),
                 )
               : null}
           </div>
         </section>
       );
-    }
+    },
   );
   return <section className={styles.forecastBox}>{forecastElements} </section>;
 }

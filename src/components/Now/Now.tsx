@@ -34,7 +34,7 @@ export default function Now(): JSX.Element {
           <p>{hour.time.slice(10, 18)}</p>
         </div>
       );
-    }
+    },
   );
 
   //   trying to scroll to current hour
